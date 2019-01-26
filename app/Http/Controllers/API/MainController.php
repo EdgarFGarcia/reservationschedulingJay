@@ -11,18 +11,32 @@ class MainController extends Controller
     //
     public function test(){
 
-    	return $query = MainModel::getUsers();
+    	// return $query = MainModel::getUsers();
 
-    	if($query){
-    		return view('jay', compact([
-    			'users' => $query
-    		]));
-    	}
+    	return view('jay');
+
+    	// if($query){
+    	// 	return view('jay', compact([
+    	// 		'users' => $query
+    	// 	]));
+    	// }
 
     	
     }
 
     public function jay(){
     	return "hello world";
+    }
+
+    public function createuser(Request $r){
+    	// return $r->all();
+    	$query = MainModel::createuser($r);
+
+    	if($query){
+    		return response()->json([
+    			'response' => true,
+    			'message' => "Creating User Successful"
+    		]);
+    	}
     }
 }
